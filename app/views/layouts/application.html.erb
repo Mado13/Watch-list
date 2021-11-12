@@ -13,23 +13,6 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <ul class="navbar-nav mr-auto">
-        <img src="/Users/mado/code/Mado13/rails-watch-list/app/assets/images/robot.jpeg" width="30" height="30" alt="">
-        <li class="nav-item">
-          <%= link_to "New List", new_list_path %>
-        </li>
-      </ul>
-      <div>
-        <li class="nav-item mr-auto">
-          <%= link_to "My Lists", lists_path %>
-        </li>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
     <%= yield %>
   </body>
 </html>
