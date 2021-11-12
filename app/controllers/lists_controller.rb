@@ -1,10 +1,8 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-  end
-
-  def new
     @list = List.new
+    @poster_url =
   end
 
   def create
@@ -25,6 +23,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :poster)
   end
 end

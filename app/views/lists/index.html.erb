@@ -1,13 +1,36 @@
-<div class="banner navbar-expand-lg navbar-dark bg-dark">
- <ul class="navbar-nav mr-auto">
-   <li class="nav-item">
-     <%= link_to "New List", new_list_path %>
-   </li>
-    <li class="nav-item mr-auto">
-      <%= link_to "My Lists", lists_path %>
-    </li>
- </ul>
+<div class="modal fade" id="newListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/lists" method="post">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="form-group">
+            <label for="list-name" class="col-form-label">List Name:</label>
+            <input type="text" class="form-control" id="list-name" name="list[name]">
+            <label for="poster-url" class="col-form-label">Image URL:</label>
+            <input type="text" class="form-control" id="poster-url" name="list[poster]">
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger">Create List</button>
+          </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="banner navbar-expand-lg navbar-dark bg-dark d-flex justify-content-center">
+ <div class="align-text-center">
   <h1>Save Your Favorite Movies</h1>
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#newListModal"">New List</button>
+ </div>
 </div>
 <div class="container d-flex justify-content-around">
   <div class="row">
@@ -16,6 +39,5 @@
         <h3 class="col"><%= link_to list.name, list_path(list) %></h3>
       </div>
     <% end %>
-    <%= link_to "Create A movie list", new_list_path %>
   </div>
 </div>

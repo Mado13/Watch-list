@@ -5,15 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'open-uri'
-require 'json'
+# require 'open-uri'
+# require 'json'
 
-url = 'http://tmdb.lewagon.com/movie/top_rated'
-serialized = URI.open(url).read
-movies = JSON.parse(serialized)
+# url = 'http://tmdb.lewagon.com/movie/top_rated'
+# serialized = URI.open(url).read
+# movies = JSON.parse(serialized)
 
-movies['results'].each do |movie|
-  base_image_url = 'https://image.tmdb.org/t/p/w200'
-  image_url = "#{base_image_url}#{movie['poster_path']}"
-  Movie.create(title: movie['title'], overview: movie['overview'], rating: movie['vote_average'], poster_url: image_url )
-end
+# movies['results'].each do |movie|
+#   base_image_url = 'https://image.tmdb.org/t/p/w200'
+#   image_url = "#{base_image_url}#{movie['poster_path']}"
+#   Movie.create(title: movie['title'], overview: movie['overview'], rating: movie['vote_average'], poster_url: image_url )
+# end
+
+require 'down'
+require 'cloudinary'
+
+tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
+FileUtils.mv(tempfile.path, "/Users/mado/code/Mado13/rails-watch-list/Mado.jpg")
+Cloudinary::Uploader.upload('/Users/mado/code/Mado13/rails-watch-list/Mado.jpg')
