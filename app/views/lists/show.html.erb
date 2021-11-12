@@ -1,7 +1,7 @@
 <h1 class="container"><%= @list.name %></h1>
-<div class="container">
+<div class="container  d-inline-flex align-items-stretch">
   <% @list.bookmarks.each do |bookmark| %>
-    <div class="card d-inline-flex align-items-stretchpp" style="width: 18rem;">
+    <div class="card" style="width: 18rem;">
       <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= bookmark.movie.title %></h5>
