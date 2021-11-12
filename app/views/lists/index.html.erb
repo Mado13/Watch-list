@@ -1,0 +1,13 @@
+<div class="navbar" style="background-image: url(app/assets/images/Theater.jpeg);">
+  <h1>Save Your Favorite Movies</h1>
+</div>
+<div class="container d-flex justify-content-around">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="card">
+        <h3 class="col"><%= link_to list.name, list_path(list) %></h3>
+      </div>
+    <% end %>
+    <%= link_to "Create A movie list", new_list_path %>
+  </div>
+</div>

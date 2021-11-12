@@ -1,0 +1,24 @@
+<h1 class="container"><%= @list.name %></h1>
+<div class="container">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card d-inline-flex align-items-stretch" style="width: 18rem;">
+      <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class: "card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= bookmark.movie.title %></h5>
+        <p class="card-text"><%= bookmark.movie.overview %></p>
+        <p><%= bookmark.comment %></p>
+        <%= link_to "Delete",
+              list_bookmark_path(list_id: @list, id: bookmark.id),
+              method: :delete, data: { confirm: "delete?" } %>
+        <%= "🌟" * bookmark.movie.rating %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
